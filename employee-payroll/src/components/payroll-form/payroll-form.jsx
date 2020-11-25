@@ -41,7 +41,7 @@ const PayrollForm = (props) => {
         }
     }
     const [formValue, setForm] = useState(initialValue);
-  
+
     const changeValue = (event) => {
         setForm({ ...formValue, [event.target.name]: event.target.value })
     }
@@ -98,7 +98,7 @@ const PayrollForm = (props) => {
     }
     const save = async (event) => {
         event.preventDefault();
-     
+        console.log("save method on click");
     }
     /**
  * description:- to reset the form value
