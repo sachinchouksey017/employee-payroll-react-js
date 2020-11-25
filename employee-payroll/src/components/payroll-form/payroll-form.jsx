@@ -41,7 +41,13 @@ const PayrollForm = (props) => {
         }
     }
     const [formValue, setForm] = useState(initialValue);
+    const params = useParams();
+    const employeeService = new EmployeeService();
 
+    const setData = (obj) => {
+        let array = obj.startDate.split(' ')
+        setForm({ ...formValue, ...obj, departMentValue: obj.departMent, isUpdate: true, day: array[0], month: array[1], year: array[2] })
+    }
     const changeValue = (event) => {
         setForm({ ...formValue, [event.target.name]: event.target.value })
     }
@@ -109,7 +115,14 @@ const PayrollForm = (props) => {
             profileUrl: formValue.profileUrl,
 
         }
-        console.log("data in save method", object);
+        employeeService.addEmployee(object).then(data => {
+            console.log("data added");
+            props.history.push('')
+        }).catch(err => {
+            console.log("err while Add");
+
+        })
+
     }
     /**
  * description:- to reset the form value
