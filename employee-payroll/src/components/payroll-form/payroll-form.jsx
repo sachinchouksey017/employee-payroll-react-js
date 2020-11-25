@@ -98,7 +98,18 @@ const PayrollForm = (props) => {
     }
     const save = async (event) => {
         event.preventDefault();
-        console.log("save method on click");
+        let object = {
+            name: formValue.name,
+            departMent: formValue.departMentValue,
+            gender: formValue.gender,
+            salary: formValue.salary,
+            startDate: `${formValue.day} ${formValue.month} ${formValue.year}`,
+            notes: formValue.notes,
+            id: formValue.id,
+            profileUrl: formValue.profileUrl,
+
+        }
+        console.log("data in save method", object);
     }
     /**
  * description:- to reset the form value
