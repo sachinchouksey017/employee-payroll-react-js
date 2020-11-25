@@ -10,6 +10,12 @@ import { withRouter } from "react-router-dom";
 import EmployeeService from '../../services/employee-service'
 
 const Display = (props) => {
+    const employeeService = new EmployeeService();
+
+    const update = (employeeId) => {
+        // this.router.navigateByUrl(`payroll-form/${employeeId}`);
+        props.history.push(`payroll-form/${employeeId}`)
+    }
     return (
         <table id="display" className="display">
             <tbody>
@@ -42,7 +48,7 @@ const Display = (props) => {
                             <td> ₹ {element.salary}</td>
                             <td>{element.startDate}</td>
                             <td><img src={deleteIcon} alt="delete" />
-                                <img src={editIcon} alt="edit" />
+                                <img onClick={() => update(element.id)} src={editIcon} alt="edit" />
                             </td>
                         </tr>
                     ))
