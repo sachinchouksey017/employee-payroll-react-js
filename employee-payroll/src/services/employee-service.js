@@ -14,6 +14,9 @@ export default class EmployeeService {
     addEmployee(data) {
         return AxiosService.postService(`${this.baseUrl}employee`, data);
     }
+    updateEmployee(data) {
+        return AxiosService.putService(`${this.baseUrl}employee/${data.id}`, data)
+    }
    
 
 }
