@@ -45,6 +45,21 @@ const PayrollForm = (props) => {
     const params = useParams();
     const employeeService = new EmployeeService();
 
+    useEffect(() => {
+        if (params.id) {
+            getDataById(params.id);
+        }
+    }, [])
+
+    const getDataById = (id) => {
+        employeeService.getEmployee(id).then(data => {
+            console.log("data is ", data.data);
+            let obj = data.data;
+            setData(obj)
+        }).catch(err => {
+            console.log("err is ", err);
+        })
+    }
     const setData = (obj) => {
         let array = obj.startDate.split(' ')
         setForm({ ...formValue, ...obj, departMentValue: obj.departMent, isUpdate: true, day: array[0], month: array[1], year: array[2] })
