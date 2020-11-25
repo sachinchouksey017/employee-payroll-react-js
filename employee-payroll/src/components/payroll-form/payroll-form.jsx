@@ -98,21 +98,7 @@ const PayrollForm = (props) => {
     }
     const save = async (event) => {
         event.preventDefault();
-        if (await validData()) {
-            console.log('error', formValue);
-            return;
-        }
-        let object = {
-            name: formValue.name,
-            departMent: formValue.departMentValue,
-            gender: formValue.gender,
-            salary: formValue.salary,
-            startDate: `${formValue.day} ${formValue.month} ${formValue.year}`,
-            notes: formValue.notes,
-            id: formValue.id,
-            profileUrl: formValue.profileUrl,
-
-        }
+     
     }
     /**
  * description:- to reset the form value
