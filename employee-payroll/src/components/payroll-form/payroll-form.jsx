@@ -135,14 +135,23 @@ const PayrollForm = (props) => {
             profileUrl: formValue.profileUrl,
 
         }
-        employeeService.addEmployee(object).then(data => {
-            console.log("data added successfully");
-            props.history.push('')
-        }).catch(err => {
-            console.log("error while Add");
+        if (formValue.isUpdate) {
+            // this line is because when user reset the value then id is also reset 
+            employeeService.updateEmployee(object).then(data => {
+                console.log('data after update', data);
+                props.history.push('')
+            }).catch(err => {
+                console.log("Error after update");
+            })
+        } else {
+            employeeService.addEmployee(object).then(data => {
+                console.log("data added");
+                props.history.push('')
+            }).catch(err => {
+                console.log("err while Add");
 
-        })
-
+            })
+        }
     }
     /**
  * description:- to reset the form value
