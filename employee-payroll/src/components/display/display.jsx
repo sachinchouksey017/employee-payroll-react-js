@@ -12,6 +12,14 @@ import EmployeeService from '../../services/employee-service'
 const Display = (props) => {
     const employeeService = new EmployeeService();
 
+    const remove = (employeeId) => {
+        employeeService.deleteEmployee(employeeId).then(data => {
+            console.log("data after delete", data);
+            props.getAllEmployee()
+        }).catch(err => {
+            console.log("err after delete", err);
+        })
+    }
     const update = (employeeId) => {
         // this.router.navigateByUrl(`payroll-form/${employeeId}`);
         props.history.push(`payroll-form/${employeeId}`)
@@ -47,7 +55,7 @@ const Display = (props) => {
                             </td>
                             <td> ₹ {element.salary}</td>
                             <td>{element.startDate}</td>
-                            <td><img src={deleteIcon} alt="delete" />
+                            <td><img onClick={()=>remove(element.id)} src={deleteIcon} alt="delete" />
                                 <img onClick={() => update(element.id)} src={editIcon} alt="edit" />
                             </td>
                         </tr>
