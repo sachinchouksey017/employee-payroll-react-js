@@ -6,6 +6,7 @@ import profile4 from '../../assets/profile-images/Ellipse -7.png';
 import './payroll-form.scss';
 import logo from '../../assets/images/logo.png'
 import { useParams, Link, withRouter } from 'react-router-dom';
+import EmployeeService from '../../services/employee-service'
 
 const PayrollForm = (props) => {
     let initialValue = {
@@ -42,6 +43,7 @@ const PayrollForm = (props) => {
     }
     const [formValue, setForm] = useState(initialValue);
     const params = useParams();
+    const employeeService = new EmployeeService();
 
     const setData = (obj) => {
         let array = obj.startDate.split(' ')
@@ -114,6 +116,13 @@ const PayrollForm = (props) => {
             profileUrl: formValue.profileUrl,
 
         }
+        employeeService.addEmployee(object).then(data => {
+            console.log("data added");
+            props.history.push('')
+        }).catch(err => {
+            console.log("err while Add");
+
+        })
 
     }
     /**
