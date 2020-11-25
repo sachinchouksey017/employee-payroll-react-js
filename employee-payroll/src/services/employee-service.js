@@ -1,5 +1,5 @@
 import config from '../config/config';
-import AxiosService from './axois-service'
+import AxiosService from './axios-service'
 export default class EmployeeService {
     baseUrl = config.baseUrl;
     getAllEmployee() {
