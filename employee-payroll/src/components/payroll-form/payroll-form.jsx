@@ -105,6 +105,10 @@ const PayrollForm = (props) => {
     }
     const save = async (event) => {
         event.preventDefault();
+        if (await validData()) {
+            console.log('error', formValue);
+            return;
+        }
         let object = {
             name: formValue.name,
             departMent: formValue.departMentValue,
